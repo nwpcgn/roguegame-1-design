@@ -1,0 +1,110 @@
+@import 'tailwindcss';
+@plugin "daisyui";
+
+:root {
+	--spacing-base-define: 1rem;
+	--page-width-define: 780px;
+	--page-width-sm-define: 360px;
+	--app-body-scroll-y: hidden;
+	--app-main-scroll-y: hidden;
+	--page-animation-duration: 1.5s;
+	--page-animation-delay: 0.2s;
+	--page-transform-duration: 0.5s;
+	--page-transform-delay: 0.1s;
+}
+
+:root {
+	--page-width: var(--page-width-define);
+	--page-width-sm: var(--page-width-sm-define);
+	--body-scroll-y: var(--app-body-scroll-y, hidden);
+	--main-scroll-y: var(--app-main-scroll-y, hidden);
+	--spacing-base: var(--spacing-base-define);
+	--spacing-xs: calc(var(--spacing-base) * 0.25);
+	--spacing-sm: calc(var(--spacing-base) * 0.5);
+	--spacing-md: calc(var(--spacing-base) * 0.75);
+	--spacing-lg: calc(var(--spacing-base) * 1.5);
+	--spacing-xl: calc(var(--spacing-base) * 2);
+	--content-space: var(--spacing-base);
+	--page-space: var(--content-space);
+	--family-3: 'Press Start 2P', system-ui;
+	--family-2: 'Uncial Antiqua', system-ui;
+	--family-1: 'Fira Code', monospace;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	overflow-y: var(--body-scroll-y);
+}
+
+/* For presentation only, no need to copy the code below */
+
+.main > * {
+	border: 1px dashed red;
+	position: relative;
+}
+
+/* ------------------------------- App-Layout ------------------------------- */
+
+.wrapper {
+	flex: 1;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: min-content 1fr min-content;
+	gap: 0px 0px;
+	grid-auto-flow: row;
+	grid-template-areas:
+		'top-bar'
+		'main'
+		'tab-bar';
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+
+	.top-bar {
+		grid-area: top-bar;
+	}
+
+	.tab-bar {
+		grid-area: tab-bar;
+	}
+
+	.main {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+		gap: 0px 0px;
+		grid-auto-flow: row;
+		grid-template-areas: 'page';
+		grid-area: main;
+		width: 100%;
+		height: 100%;
+	}
+
+	.page {
+		display: grid;
+		grid-template-columns: 1fr 720px 1fr;
+		grid-template-rows: 1fr;
+		gap: 0px 0px;
+		grid-auto-flow: row;
+		grid-area: page;
+		width: 100%;
+		height: 100%;
+	}
+
+	.content {
+		grid-area: 1 / 2 / 2 / 3;
+		width: 100%;
+		height: 100%;
+	}
+
+	.content-full {
+		grid-area: 1 / 1 / 2 / 4;
+	}
+}
